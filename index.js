@@ -1,7 +1,5 @@
 var eris = require('eris');
 
-var EPSILON = new Object();
-
 var epsilonClient = function(token) {
 	return new eris(token, {
 		autoreconnect: true,
