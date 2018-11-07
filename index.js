@@ -2,8 +2,8 @@ var eris = require('eris');
 
 var EPSILON = new Object();
 
-function epsilonClient(token) {
-	this.client = new eris(token, {
+var epsilonClient = function(token) {
+	return new eris(token, {
 		autoreconnect: true,
 		compress: false,
 		disableEveryone: false,
@@ -11,10 +11,6 @@ function epsilonClient(token) {
 		defaultImageFormat: 'webp',
 		defaultImageSize: 2048,
 	})
-};
-
-epsilonClient.prototype.postReply = function(channel, data) {
-	this.client.createMessage(channel, data);
 };
 
 epsilonClient.prototype.isCommand = function(prefix, callback) {
@@ -54,4 +50,4 @@ epsilonClient.prototype.getCommands = function(directory) {
 	return commandsList;
 };
 
-module.exports = EPSILON;
+module.exports = epsilonClient;
